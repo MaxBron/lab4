@@ -42,26 +42,31 @@ def callback_inline(call):
     mgr = owm.weather_manager()
     if call.message:
         if call.data == 'USD':
-            bot.send_message(call.message.chat.id, 'курс доллара: {0}'
+            bot.send_message(call.message.chat.id, 'Курс доллара: {0}'
                              .format(data['Valute']['USD']['Value']))
         if call.data == 'EUR':
-            bot.send_message(call.message.chat.id, 'курс евро: {0}'
+            bot.send_message(call.message.chat.id, 'Курс евро: {0}'
                              .format(data['Valute']['EUR']['Value']))
         if call.data == 'Moscow':
             observation = mgr.weather_at_place('Moscow')
             w = observation.weather
-            bot.send_message(call.message.chat.id, 'Температура в Москве: {0} °C, влажность: {1}, скорость ветра: {2}'
+            bot.send_message(call.message.chat.id, 'Температура в Москве: {0} °C \n'
+                                                   'Влажность: {1}%\n'
+                                                   'Скорость ветра: {2} м/c'
                              .format(w.temperature('celsius')['temp'], w.humidity, w.wind()['speed']))
         if call.data == 'New York':
             observation = mgr.weather_at_place('New York')
             w = observation.weather
-            bot.send_message(call.message.chat.id, 'Температура в Нью Йорке: {0} °C, влажность: {1}, '
-                                                   'скорость ветра: {2}'
+            bot.send_message(call.message.chat.id, 'Температура в Нью Йорке: {0} °C \n'
+                                                   'Влажность: {1}%\n'
+                                                   'Скорость ветра: {2} м/с'
                              .format(w.temperature('celsius')['temp'], w.humidity, w.wind()['speed']))
         if call.data == 'London':
             observation = mgr.weather_at_place('London')
             w = observation.weather
-            bot.send_message(call.message.chat.id, 'Температура в Лондоне: {0} °C, влажность: {1}, скорость ветра: {2}'
+            bot.send_message(call.message.chat.id, 'Температура в Лондоне: {0} °C \n'
+                                                   'Влажность: {1}%\n'
+                                                   'Скорость ветра: {2} м/с'
                              .format(w.temperature('celsius')['temp'], w.humidity, w.wind()['speed']))
 
 
